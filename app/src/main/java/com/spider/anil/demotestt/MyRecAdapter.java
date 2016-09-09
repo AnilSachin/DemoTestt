@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,7 +20,6 @@ import butterknife.ButterKnife;
 public class MyRecAdapter extends RecyclerView.Adapter<MyRecAdapter.ViewHolder> {
     Context context;
     List<Student> list;
-
 
 
     public MyRecAdapter(Context context, List<Student> list) {
@@ -59,6 +59,16 @@ public class MyRecAdapter extends RecyclerView.Adapter<MyRecAdapter.ViewHolder> 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   Toast.makeText(context, ""+list.get(getAdapterPosition()).name, Toast.LENGTH_SHORT).show();
+                   /* if(getAdapterPosition()==0){
+                        Toast.makeText(context, "ANIL", Toast.LENGTH_SHORT).show();
+                        //Single Position
+                    }*/
+                }
+            });
 
         }
     }
